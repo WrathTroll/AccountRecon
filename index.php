@@ -4,9 +4,17 @@
     //include_once "inc/bank_recon.php";
     include_once "inc/Transactions.php";
 //setup section
-    $t = new Transaction();
+
+    $tlist = new TransactionList();
+
     $s = new Settings();
-    $s->retrieveSettings();
+    $s->retrieveSettings("test");
+    
+        for($i=$s->start_transaction_display ; $i < $s->start_transaction_display+$s->transaction_display+1 ; $i++){
+            $t = new Transaction($tid=$i);
+            $tlist->addTransaction($t);
+        }    
+// todo limit visualisation of the transactions to x items as per user
 ?>
 
 <!DOCTYPE HTML>
@@ -26,12 +34,12 @@
     <BODY class="user">
         <p><?php echo $t->getName()." ".$t->getDate()." ".$t->getValue()."
             ".$t->getCreateDate()?></p>
-        <p id="jstrans">js to replace</p>
+        <p><?php $tlist->printTransactions($s->transaction_display)?>
+        <p id="jstrans">js failed to replace</p>
         <script>
             var t = new TransactionJS();
             document.getElementById("jstrans").innerHTML = t.getName() + " " +
                     t.getDate() + " " + t.getValue() + " " + t.getCreateDate();
-            //t.sayName();
         </script>
     </BODY>
 </HTML>

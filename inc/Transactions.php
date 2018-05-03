@@ -15,13 +15,15 @@ date_default_timezone_set('Africa/Johannesburg');
 
 
 class Transaction {
-    public function __construct($n="unknownPHP",$d="01/01/2018",$v="0.00") {
+    public function __construct($tid=0,$n="unknownPHP",$d="01/01/2018",$v="0.00") {
+        $this->id = $tid;
         $this->name = $n;
         $this->date = $d;
         $this->value= $v;
         $this->create_date = date('d/m/Y',time());
     }
     
+    protected $id;
     protected $name;
     protected $value;
     protected $date;
@@ -29,6 +31,7 @@ class Transaction {
     protected $edit_date;
     protected $user_id;
     
+    public function getId(){return $this->id;}
     public function getName(){return $this->name;}
     public function getDate(){return $this->date;}
     public function getValue(){return $this->value;}
@@ -38,7 +41,7 @@ class Transaction {
 }
 
 class TransactionList{
-    public function __construct(TransactionList $tl){
+    public function __construct($tl=array()){
         $this->list = $tl;
     }
     
@@ -51,6 +54,14 @@ class TransactionList{
         if($choice == "test"){
             $t = new Transaction();
             $this->addTransaction($t);
+        }
+    }
+    
+    public function printTransactions($limit){
+        //$i = 0;
+        foreach($this->list as $t){
+            echo "transaction ".$t->getId().": ".$t->getName()."<br>";
+        //    $i = $i + 1;
         }
     }
 }
