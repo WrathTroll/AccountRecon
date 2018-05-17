@@ -38,23 +38,5 @@
         <p id="jstrans">js failed to replace</p>
         <br>
         <p id="jstranslist">js failed to replace list</p>
-        <script>
-        var t = new TransactionJS();
-            for (var i = 0;i<6;i++){
-              var tr = new TransactionJS();
-            };
-            document.getElementById("jstrans").innerHTML = t.getName() + " " +
-                    t.getDate() + " " + t.getValue() + " " + t.getCreateDate();
-            for (var i = 0;i<6;i++){
-              addTransaction(t[i]);
-            };
-            var result = t_list.map(a=>a.name);
-            var rid = t_list.map(b=>b.tid);
-            var broken_up="";
-            for(var key in result){
-              broken_up += result[key] + " " + rid[key] + "<br/>" ;
-            }
-            document.getElementById("jstranslist").innerHTML = broken_up;
-        </script>
     </BODY>
 </HTML>
