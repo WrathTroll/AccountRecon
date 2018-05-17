@@ -35,8 +35,5 @@
         <p><?php echo $t->getName()." ".$t->getDate()." ".$t->getValue()."
             ".$t->getCreateDate()?></p>
         <p><?php $tlist->printTransactions($s->transaction_display)?>
-        <p id="jstrans">js failed to replace</p>
-        <br>
-        <p id="jstranslist">js failed to replace list</p>
     </BODY>
 </HTML>
