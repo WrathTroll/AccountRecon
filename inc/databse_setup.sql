@@ -1,4 +1,4 @@
-CREATE TABLE IF NOT EXISTS `transactions` (
+CREATE TABLE IF NOT EXISTS `transaction` (
 `id` int(11) NOT NULL AUTO_INCREMENT,
 `date` datetime NOT NULL,
 `value` float NOT NULL DEFAULT 0.00,
@@ -9,16 +9,19 @@ CREATE TABLE IF NOT EXISTS `transactions` (
 PRIMARY KEY(`id`)
 ) ENGINE = MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1;
 
-CREATE TABLE IF NOT EXISTS `recons` (
+CREATE TABLE IF NOT EXISTS `recon` (
 `id` int(11) NOT NULL AUTO_INCREMENT,
 `recon_type_id` int(11) NOT NULL,
-`Month` int(2)NOT NULL,
+`Month` int(2) NOT NULL,
+`year` int(4) NOT NULL,
+`open_balance` float NOT NULL,
+`close_balance` float NOT NULL,
 `created` datetime NOT NULL,
 `modified` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
 PRIMARY KEY(`id`)
 ) ENGINE = MyISAM DEFAULT CHARSET= utf8 AUTO_INCREMENT=1;
 
-CREATE TABLE IF NOT EXISTS `allocations` (
+CREATE TABLE IF NOT EXISTS `allocation` (
 `id` int(11) NOT NULL AUTO_INCREMENT,
 `name` varchar(32) NOT NULL,
 `created` datetime NOT NULL,
@@ -26,7 +29,7 @@ CREATE TABLE IF NOT EXISTS `allocations` (
 PRIMARY KEY(`id`)
 ) ENGINE = MyISAM DEFAULT CHARSET= utf8 AUTO_INCREMENT=1;
 
-CREATE TABLE IF NOT EXISTS `recon_types` (
+CREATE TABLE IF NOT EXISTS `recon_type` (
 `id` int(11) NOT NULL AUTO_INCREMENT,
 `name` varchar(32) NOT NULL,
 `created` datetime NOT NULL,
