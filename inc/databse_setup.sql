@@ -1,5 +1,6 @@
 CREATE TABLE IF NOT EXISTS `transaction` (
 `id` int(11) NOT NULL AUTO_INCREMENT,
+`name` varchar(64) NOT NULL,
 `date` datetime NOT NULL,
 `value` float NOT NULL DEFAULT 0.00,
 `allocation_id` int(11) NOT NULL DEFAULT 0,
